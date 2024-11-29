@@ -1,0 +1,32 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/docker/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=development
+      - PORT=8000
+      - DB_PATH=/data/retrospec.db
+    volumes:
+      - .:/app
+      - sqlite_data:/data
+
+  web:
+    build:
+      context: .
+      dockerfile: frontend/docker/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - ENV=development
+      - PORT=3000
+      - API_URL=http://api:8000
+    depends_on:
+      - api
+
+volumes:
+  sqlite_data:
