@@ -1,4 +1,3 @@
-// internal/routes/api.go
 package routes
 
 import (
@@ -7,7 +6,7 @@ import (
 )
 
 func SetupAPIRoutes(app *fiber.App) {
-	apiGroup := app.Group("/api")
+	// apiGroup := app.Group("/api")
 
 	// Authentication routes
 	// auth := apiGroup.Group("/auth")
@@ -15,5 +14,5 @@ func SetupAPIRoutes(app *fiber.App) {
 	// auth.Post("/login", api.Login)
 
 	// // Protected routes
-	apiGroup.Use(api.AuthMiddleware)
-
+	// apiGroup.Use(api.AuthMiddleware)
+}
