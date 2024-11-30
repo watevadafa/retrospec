@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="/assets/styles/main.css">
 </head>
 <body>
-    {{template "components/header" .}}
+    {{template "header" .}}
     
     <main class="container">
-        {{template "content" .}}
+        {{embed}}
     </main>
 
-    {{template "components/footer" .}}
+    {{template "footer" .}}
 </body>
 </html>

@@ -5,6 +5,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/template/html/v2"
+	"github.com/watevadafa/retrospec/internal/handlers"
 	"github.com/watevadafa/retrospec/internal/routes"
 	"log"
 )
@@ -15,8 +16,9 @@ func main() {
 
 	// Initialize fiber app
 	app := fiber.New(fiber.Config{
-		Views:       engine,
-		ViewsLayout: "main",
+		Views:        engine,
+		ViewsLayout:  "main",
+		ErrorHandler: handlers.ErrorHandler,
 	})
 
 	// Serve static files
@@ -33,13 +35,6 @@ func main() {
 		AllowHeaders: "Origin, Content-Type, Accept, Authorization",
 		AllowMethods: "GET, POST, PUT, DELETE",
 	}))
-
-	// Error handling
-	app.Use(func(c *fiber.Ctx) error {
-		return c.Status(404).Render("errors/404", fiber.Map{
-			"Title": "Page Not Found",
-		})
-	})
 
 	// Start server
 	log.Fatal(app.Listen(":8080"))

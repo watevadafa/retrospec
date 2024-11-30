@@ -1,0 +1,35 @@
+<div class="signup-section">
+    <h1>Get Started with RetroSpec {{if .IsPro}}Pro{{end}}</h1>
+    
+    {{if .IsPro}}
+    <div class="pro-banner">
+        <span class="pro-label">PRO</span>
+        <p>You're signing up for RetroSpec Pro with unlimited access to all features.</p>
+    </div>
+    {{end}}
+
+    <div class="signup-form">
+        <form hx-post="/api/signup" hx-swap="outerHTML">
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            {{if .IsPro}}
+                <input type="hidden" name="plan" value="pro">
+            {{end}}
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+</div>
