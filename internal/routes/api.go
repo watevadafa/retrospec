@@ -2,7 +2,6 @@ package routes
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/watevadafa/retrospec/internal/api"
 )
 
 func SetupAPIRoutes(app *fiber.App) {
