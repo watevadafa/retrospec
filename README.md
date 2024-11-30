@@ -18,6 +18,7 @@ retrospec/
 │   ├── images/
 │   ├── scripts/
 │   └── styles/
+│       └── main.css
 ├── cmd/
 │   └── server/
 │       └── main.go
@@ -30,43 +31,22 @@ retrospec/
 ├── go.sum
 ├── internal/
 │   ├── api/
-│   │   ├── auth/
-│   │   │   ├── handlers.go
-│   │   │   └── middleware.go
-│   │   ├── boards/
-│   │   ├── organizations/
-│   │   ├── teams/
-│   │   └── users/
 │   ├── config/
-│   │   └── config.go
 │   ├── db/
 │   ├── handlers/
-│   │   ├── auth.go
-│   │   ├── boards.go
-│   │   ├── organizations.go
-│   │   ├── teams.go
-│   │   └── users.go
+│   │   └── home.go
 │   ├── models/
-│   │   ├── board.go
-│   │   ├── organization.go
-│   │   ├── team.go
-│   │   └── user.go
 │   └── routes/
 │       ├── api.go
 │       └── web.go
 ├── migrations/
 ├── templates/
-│   ├── auth/
-│   ├── boards/
 │   ├── components/
 │   │   ├── footer.html
 │   │   └── header.html
 │   ├── main.html
-│   ├── organizations
-│   ├── pages/
-│   │   └── home.html
-│   ├── teams/
-│   └── users/
+│   └── pages/
+│       └── home.html
 └── tests/
 
 ```
