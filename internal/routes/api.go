@@ -2,14 +2,15 @@ package routes
 
 import (
 	"github.com/gofiber/fiber/v2"
+	"github.com/watevadafa/retrospec/internal/api/auth"
 )
 
 func SetupAPIRoutes(app *fiber.App) {
-	// apiGroup := app.Group("/api")
+	apiGroup := app.Group("/api")
 
 	// Authentication routes
-	// auth := apiGroup.Group("/auth")
-	// auth.Post("/register", api.Register)
+	authGroup := apiGroup.Group("/auth")
+	authGroup.Post("/signup", auth.SignUp)
 	// auth.Post("/login", api.Login)
 
 	// // Protected routes

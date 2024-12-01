@@ -1,6 +1,6 @@
 <div class="signup-section">
     <h1>Get Started with RetroSpec {{if .IsPro}}Pro{{end}}</h1>
-    
+
     {{if .IsPro}}
     <div class="pro-banner">
         <span class="pro-label">PRO</span>
@@ -9,14 +9,14 @@
     {{end}}
 
     <div class="signup-form">
-        <form hx-post="/api/signup" hx-swap="outerHTML">
+        <form hx-post="/api/auth/signup" hx-swap="outerHTML">
             <div class="form-group">
                 <label for="first_name">First Name</label>
                 <input type="text" id="first_name" name="first_name" required>
             </div>
             <div class="form-group">
                 <label for="last_name">Last Name</label>
-                <input type="text" id="last_name" name="last_name" required>
+                <input type="text" id="last_name" name="last_name">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>

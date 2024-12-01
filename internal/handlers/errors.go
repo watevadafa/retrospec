@@ -3,6 +3,7 @@ package handlers
 import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"github.com/watevadafa/retrospec/internal/types"
 	"strings"
 )
 
@@ -24,14 +25,13 @@ func WebErrorHandler(c *fiber.Ctx, err error) error {
 func APIErrorHandler(c *fiber.Ctx, err error) error {
 	code := fiber.StatusInternalServerError
 
-	if e, ok := err.(*fiber.Error); ok {
-		code = e.Code
+	if error, ok := err.(*fiber.Error); ok {
+		code = error.Code
 	}
 
-	return c.Status(code).JSON(fiber.Map{
-		"error":   true,
-		"code":    code,
-		"message": err.Error(),
+	return c.Status(code).JSON(types.Error{
+		Code:    code,
+		Message: err.Error(),
 	})
 }
 
