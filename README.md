@@ -31,22 +31,46 @@ retrospec/
 ├── go.sum
 ├── internal/
 │   ├── api/
+│   │   └── auth/
+│   │       └── signup.go
 │   ├── config/
+│   │   └── config.go
 │   ├── db/
+│   │   └── sqlite.go
 │   ├── handlers/
-│   │   └── home.go
+│   │   ├── auth.go
+│   │   ├── errors.go
+│   │   └── pages.go
 │   ├── models/
-│   └── routes/
-│       ├── api.go
-│       └── web.go
+│   │   ├── repositories/
+│   │   │   ├── initializer.go
+│   │   │   └── user_repository.go
+│   │   └── user.go
+│   ├── routes/
+│   │   ├── api.go
+│   │   └── web.go
+│   ├── types/
+│   │   ├── common.go
+│   │   └── core.go
+│   └── utils/
+│       ├── parsers.go
+│       └── strings.go
 ├── migrations/
+│   └── 001_users.sql
 ├── templates/
 │   ├── components/
 │   │   ├── footer.html
 │   │   └── header.html
+│   ├── errors/
+│   │   ├── 404.html
+│   │   └── 500.html
 │   ├── main.html
 │   └── pages/
-│       └── home.html
+│       ├── about.html
+│       ├── contact.html
+│       ├── home.html
+│       ├── pricing.html
+│       └── signup.html
 └── tests/
 
 ```
