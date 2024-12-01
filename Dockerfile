@@ -1,9 +1,13 @@
 FROM golang:1.23-alpine
 
+# Create data directory
+RUN mkdir -p /data && \
+    chmod 777 /data
+
 WORKDIR /app
 
 # Install build essentials and Air
-# RUN apk add --no-cache gcc musl-dev && \
+RUN apk add --no-cache gcc musl-dev sqlite-dev
 RUN go install github.com/air-verse/air@latest
 
 # Copy dependency files

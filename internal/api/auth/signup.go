@@ -1,11 +1,13 @@
 package auth
 
 import (
+	"log"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/watevadafa/retrospec/internal/models"
+	"github.com/watevadafa/retrospec/internal/models/repositories"
 	"github.com/watevadafa/retrospec/internal/types"
 	"github.com/watevadafa/retrospec/internal/utils"
-	"log"
 )
 
 type SignupRequest struct {
@@ -15,6 +17,8 @@ type SignupRequest struct {
 	LastName  string `json:"last_name" form:"last_name"`
 	Plan      string `json:"plan" form:"plan"`
 }
+
+var userRepo *repositories.UserRepository
 
 func validateSignupRequest(request SignupRequest) []types.Error {
 	var errors []types.Error
@@ -59,6 +63,25 @@ func validateSignupRequest(request SignupRequest) []types.Error {
 		})
 	}
 	log.Printf("Email format validation Successful")
+
+	// Check if email exists
+	existingUser, err := repositories.UserRepo.GetByEmail(request.Email)
+	if err != nil {
+		log.Fatal(err)
+		errors = append(errors, types.Error{
+			Field:   "email",
+			Message: "Error checking email availability",
+			Code:    fiber.StatusInternalServerError,
+		})
+	}
+
+	if existingUser != nil {
+		errors = append(errors, types.Error{
+			Field:   "email",
+			Message: "Email already registered",
+			Code:    fiber.StatusConflict,
+		})
+	}
 
 	// Password format validation
 	personalInfo := types.PersonalInfo{
@@ -112,13 +135,20 @@ func SignUp(c *fiber.Ctx) error {
 	user := models.NewUser(
 		request.Email,
 		request.FirstName,
-		request.LastName,
+		&request.LastName,
 		request.Plan,
 	)
 	user.PasswordHash = hashedPassword
 
-	// TODO: Save user to database
+	// Save user to database
 	log.Printf("Saving user to database")
+	err = repositories.UserRepo.Create(user)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(types.Error{
+			Message: "Error saving user to database",
+			Code:    fiber.StatusInternalServerError,
+		})
+	}
 
 	return c.Status(fiber.StatusCreated).JSON(fiber.Map{
 		"message": "User created successfully",
