@@ -1,19 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RetroSpec - {{.Title}}</title>
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-    <link rel="stylesheet" href="/assets/styles/main.css">
-</head>
-<body>
-    {{template "header" .}}
-    
-    <main class="container">
-        {{embed}}
-    </main>
 
-    {{template "footer" .}}
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"
+        integrity="sha256-4zNcN4KkR/mpe//kDfUZ3bF/tpXl7UY1krSYT4WQDyk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit-icons.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css"
+        integrity="sha256-aLupBlvjWcEkt1UqyP8A8UD2DypecuICUbWQgnHgPnA=" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/assets/styles/main.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check for hash in URL
+            if (window.location.hash) {
+                const element = document.querySelector(window.location.hash);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div class="uk-background-secondary uk-preserve-color" style="background-color: #1a1a1a;">
+        {{template "header" .}}
+
+        <main>
+            {{embed}}
+        </main>
+
+        {{template "footer" .}}
+    </div>
 </body>
+
 </html>

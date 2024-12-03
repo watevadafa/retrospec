@@ -69,7 +69,7 @@ retrospec/
 │       ├── about.html
 │       ├── contact.html
 │       ├── home.html
-│       ├── pricing.html
+│       ├── plans.html
 │       └── signup.html
 └── tests/
 

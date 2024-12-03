@@ -1,14 +1,52 @@
-<div class="contact-section">
-   <h1>Contact Us</h1>
-   <form hx-post="/api/contact" hx-swap="outerHTML">
-       <div class="form-group">
-           <label for="email">Email</label>
-           <input type="email" id="email" name="email" required>
-       </div>
-       <div class="form-group">
-           <label for="message">Message</label>
-           <textarea id="message" name="message" required></textarea>
-       </div>
-       <button type="submit">Send Message</button>
-   </form>
+<!-- Hero Section -->
+<div class="uk-section uk-section-primary uk-light">
+    <div class="uk-container">
+        <h1 class="uk-heading-medium">Contact Us</h1>
+        <p class="uk-text-lead">We'd love to hear from you</p>
+    </div>
+</div>
+
+<!-- Contact Form Section -->
+<div class="uk-section uk-section-secondary">
+    <div class="uk-container">
+        <div class="uk-grid uk-grid-match" uk-grid>
+            <div class="uk-width-1-2@m">
+                <form class="uk-form-stacked" hx-post="/api/contact" hx-swap="outerHTML">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="name">Name</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="name" name="name" type="text" required>
+                        </div>
+                    </div>
+                    
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="email">Email</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="email" name="email" type="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="message">Message</label>
+                        <div class="uk-form-controls">
+                            <textarea class="uk-textarea" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <button class="uk-button uk-button-primary" type="submit">Send Message</button>
+                </form>
+            </div>
+            
+            <div class="uk-width-1-2@m">
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3>Other Ways to Reach Us</h3>
+                    <ul class="uk-list uk-list-large uk-list-divider">
+                        <li><span uk-icon="mail"></span> support@retrospec.app</li>
+                        <li><span uk-icon="location"></span> Our Office</li>
+                        <li><span uk-icon="clock"></span> Response time: 24 hours</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

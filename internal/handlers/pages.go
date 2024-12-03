@@ -14,14 +14,20 @@ func ShowAbout(c *fiber.Ctx) error {
 	})
 }
 
-func ShowPricing(c *fiber.Ctx) error {
-	return c.Render("pages/pricing", fiber.Map{
-		"Title": "Pricing",
+func ShowPlans(c *fiber.Ctx) error {
+	return c.Render("pages/plans", fiber.Map{
+		"Title": "plans",
 	})
 }
 
 func ShowContact(c *fiber.Ctx) error {
 	return c.Render("pages/contact", fiber.Map{
 		"Title": "Contact Us",
+	})
+}
+
+func ShowFeatures(c *fiber.Ctx) error {
+	return c.Render("pages/features", fiber.Map{
+		"Title": "Features",
 	})
 }

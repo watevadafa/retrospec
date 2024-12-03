@@ -1,0 +1,77 @@
+{{define "header"}}
+<div uk-sticky="start: 170; animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-light">
+    <nav class="uk-navbar-container uk-margin uk-light">
+        <div class="uk-container uk-container-expand">
+            <div uk-navbar>
+                <!-- Logo - Always visible -->
+                <div class="uk-navbar-left">
+                    <a class="uk-logo" href="/home">RetroSpec</a>
+                </div>
+
+                <!-- Desktop Menu - Hidden on mobile -->
+                <div class="uk-navbar-right uk-visible@m">
+                    <ul class="uk-navbar-nav">
+                        <li>
+                            <a href="/features">Features <span uk-navbar-parent-icon></span></a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="/features#boards">Boards</a></li>
+                                    <li><a href="/features#teams">Teams</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/plans">Plans <span uk-navbar-parent-icon></span></a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="/plans#free">Free plan</a></li>
+                                    <li><a href="/plans#pro">Pro plan</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/about">About <span uk-navbar-parent-icon></span></a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="/about">About us</a></li>
+                                    <li><a href="/contact">Contact us</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#" class="uk-icon-link" uk-icon="sign-in"></a></li>
+                    </ul>
+                </div>
+
+                <!-- Mobile Menu Toggle - Only visible on mobile -->
+                <div class="uk-navbar-right uk-hidden@m">
+                    <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #mobile-menu"></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Off-canvas -->
+    <div id="mobile-menu" uk-offcanvas="overlay: true; flip: true">
+        <div class="uk-offcanvas-bar">
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            <ul class="uk-nav uk-nav-default">
+                <li class="uk-nav-header"><a href="/features">Features</a></li>
+                <li><a href="/boards">Boards</a></li>
+                <li><a href="/teams">Teams</a></li>
+                
+                <li class="uk-nav-header">Plans</li>
+                <li><a href="/plans">plans</a></li>
+                <li><a href="/plans/free">Free plan</a></li>
+                <li><a href="/plans/pro">Pro plan</a></li>
+                
+                <li class="uk-nav-header">About</li>
+                <li><a href="/about">About us</a></li>
+                <li><a href="/contact">Contact us</a></li>
+                
+                <li class="uk-nav-divider"></li>
+                <li><a href="#"><span uk-icon="sign-in" class="uk-margin-small-right"></span> Login</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{{end}}

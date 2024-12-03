@@ -1,35 +1,86 @@
-<div class="signup-section">
-    <h1>Get Started with RetroSpec {{if .IsPro}}Pro{{end}}</h1>
-
-    {{if .IsPro}}
-    <div class="pro-banner">
-        <span class="pro-label">PRO</span>
-        <p>You're signing up for RetroSpec Pro with unlimited access to all features.</p>
+<!-- Hero Section -->
+<div class="uk-section uk-section-primary uk-light">
+    <div class="uk-container">
+        <h1 class="uk-heading-medium">Get Started with RetroSpec {{if .IsPro}}Pro{{end}}</h1>
+        <p class="uk-text-lead">Create your account and start improving team collaboration</p>
     </div>
-    {{end}}
+</div>
 
-    <div class="signup-form">
-        <form hx-post="/api/auth/signup" hx-swap="outerHTML">
-            <div class="form-group">
-                <label for="first_name">First Name</label>
-                <input type="text" id="first_name" name="first_name" required>
+<!-- Signup Form Section -->
+<div class="uk-section uk-section-secondary">
+    <div class="uk-container">
+        <div class="uk-grid uk-grid-match" uk-grid>
+            <div class="uk-width-1-2@m">
+                {{if .IsPro}}
+                <div class="uk-card uk-card-primary uk-card-body uk-margin">
+                    <span class="uk-label">PRO</span>
+                    <p class="uk-text-emphasis">You're signing up for RetroSpec Pro with unlimited access to all features.</p>
+                </div>
+                {{end}}
+
+                <form class="uk-form-stacked" hx-post="/api/auth/signup" hx-swap="outerHTML">
+                <form class="uk-form-stacked" hx-post="/api/auth/signup" hx-swap="outerHTML" hx-target="this">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="first_name">First Name</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="first_name" name="first_name" type="text" placeholder="John" required>
+                        </div>
+                    </div>
+                    
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="last_name">Last Name</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="last_name" name="last_name" type="text" placeholder="Wick" >
+                        </div>
+                    </div>
+                    
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="email">Email</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="email" name="email" type="email" placeholder="john@continental.co" required>
+                        </div>
+                    </div>
+                    
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="password">Password</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="password" name="password" type="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    {{if .IsPro}}
+                        <input type="hidden" name="plan" value="pro">
+                    {{end}}
+                    
+                    <button class="uk-button uk-button-primary uk-width-1-1" type="submit">Create Account</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="last_name">Last Name</label>
-                <input type="text" id="last_name" name="last_name">
+            
+            <div class="uk-width-1-2@m">
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3>Why Choose RetroSpec{{if .IsPro}} Pro{{end}}?</h3>
+                    {{if .IsPro}}
+                    <ul class="uk-list uk-list-bullet">
+                        <li>Unlimited teams and boards</li>
+                        <li>Custom templates</li>
+                        <li>Advanced analytics</li>
+                        <li>Unlimited History</li>
+                    </ul>
+                    {{else}}
+                    <ul class="uk-list uk-list-bullet">
+                        <li>Quick setup - start your first retro in minutes</li>
+                        <li>Team-friendly interface</li>
+                        <li>Basic templates included</li>
+                        <li>Free forever plan</li>
+                    </ul>
+                    {{end}}
+                    
+                    <hr class="uk-divider-icon">
+                    
+                    <p class="uk-text-meta">Already have an account? <a href="/login">Log in here</a></p>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            {{if .IsPro}}
-                <input type="hidden" name="plan" value="pro">
-            {{end}}
-            <button type="submit">Create Account</button>
-        </form>
+        </div>
     </div>
 </div>
